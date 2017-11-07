@@ -17,4 +17,5 @@ export default {
   brown01: '#846338',
   brown02: '#aa8158', 
   blue: '#1377c3',
+  jaxee: '#5e5587'
 };

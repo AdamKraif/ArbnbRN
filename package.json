@@ -9,7 +9,8 @@
   "dependencies": {
     "react": "16.0.0-alpha.12",
     "react-native": "0.48.2",
-    "react-native-vector-icons": "^4.3.0",
+    "react-native-maps": "^0.17.1",
+    "react-native-vector-icons": "^4.4.2",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
@@ -21,7 +22,10 @@
     "babel-preset-react-native": "3.0.2",
     "eslint": "^4.6.1",
     "eslint-plugin-react": "^7.3.0",
+    "fs-extra": "^4.0.2",
     "jest": "21.0.2",
+    "minimist": "^1.2.0",
+    "prompt-checkbox": "^2.2.0",
     "react-test-renderer": "16.0.0-alpha.12"
   },
   "jest": {

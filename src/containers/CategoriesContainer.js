@@ -15,7 +15,6 @@ import listings from '../data/listings';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../redux/actions'
-import { ExplorerTabNavigator } from '../navigators/ExplorerTabNavigator'
 import {
     ScrollView,
     Text,
@@ -23,7 +22,7 @@ import {
     StyleSheet,
 } from 'react-native';
 
-class ExploreContainer extends Component {
+class CategoriesContainer extends Component {
     static navigationOptions = {
         tabBarLabel: 'EXPLORE',
         tabBarIcon: ({ tintColor }) => (
@@ -64,14 +63,14 @@ class ExploreContainer extends Component {
                     key={i}
                     style={styles.listingWrapper}
                 >
-                  <Listings
-                      key={i}
-                      title={val.title}
-                      boldTitle={val.boldTitle}
-                      listings={val.listings}
-                      showAddToFav={val.showAddToFav}
-                      onAddToFav={this.addToFav}
-                  />
+                    <Listings
+                        key={i}
+                        title={val.title}
+                        boldTitle={val.boldTitle}
+                        listings={val.listings}
+                        showAddToFav={val.showAddToFav}
+                        onAddToFav={this.addToFav}
+                    />
                 </View>
             );
         });
@@ -82,18 +81,23 @@ class ExploreContainer extends Component {
 
     render() {
         return (
-            <View style={styles.wrapper}>
-                <SearchBar />
-                <ExplorerTabNavigator/>
-            </View>
+            <ScrollView
+                style={styles.scrollview}
+                contentContainerStyle={styles.scrollViewContent}
+            >
+                <Text style={styles.heading}>Explore Jaxee</Text>
+                <View style={styles.categories}>
+                    <Categories categories={categoriesList} />
+                </View>
+                {this.state.listings}
+            </ScrollView>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    wrapper: {
-        flex: 1,
-        backgroundColor: colors.white,
+    scrollview: {
+        top: 115,
     },
     scrollViewContent: {
         paddingBottom: 80,
@@ -123,4 +127,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExploreContainer); 
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesContainer);

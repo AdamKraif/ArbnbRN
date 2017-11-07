@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+import AnimatedViews from '../components/AnimatedViews'
 
 import {
   View,
@@ -15,7 +16,7 @@ import {
 
 export default class TripsContainer extends Component {
   static navigationOptions = {
-    tabBarLabel: 'TRIPS',
+    tabBarLabel: 'ORDERS',
     tabBarIcon: ({ tintColor }) => (
       <Icon
         name='ios-ionic'
