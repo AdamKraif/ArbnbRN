@@ -203,7 +203,7 @@ class AnimatedViews extends React.Component {
     componentDidMount() {
         const { region, panX, panY, scrollX, markers } = this.state;
 
-        panX.addListener(this.onPanXChange);
+        // panX.addListener(this.onPanXChange);
         panY.addListener(this.onPanYChange);
 
         region.stopAnimation();
@@ -229,7 +229,7 @@ class AnimatedViews extends React.Component {
         const topOfMainWindow = ITEM_PREVIEW_HEIGHT + panY.__getValue();
         const topOfTap = screen.height - pageY;
 
-        return topOfTap < topOfMainWindow;
+        return topOfTap < screen.height;
     }
 
     onMoveShouldSetPanResponder = (e) => {
@@ -238,7 +238,7 @@ class AnimatedViews extends React.Component {
         const topOfMainWindow = ITEM_PREVIEW_HEIGHT + panY.__getValue();
         const topOfTap = screen.height - pageY;
 
-        return topOfTap < topOfMainWindow;
+        return topOfTap < screen.height;
     }
 
     onPanXChange = ({ value }) => {
@@ -250,9 +250,12 @@ class AnimatedViews extends React.Component {
     }
 
     onPanYChange = ({ value }) => {
+
+        if (value <= (screen.height * 0.1)) return;
+
         const { canMoveHorizontal, region, scrollY, scrollX, markers, index } = this.state;
         const shouldBeMovable = Math.abs(value) < 2;
-        if (shouldBeMovable !== canMoveHorizontal) {
+        // if (shouldBeMovable !== canMoveHorizontal) {
             this.setState({ canMoveHorizontal: shouldBeMovable });
             if (!shouldBeMovable) {
                 const { coordinate } = markers[index];
@@ -292,7 +295,7 @@ class AnimatedViews extends React.Component {
                     duration: 0,
                 }).start();
             }
-        }
+        // }
     }
 
     onRegionChange(/* region */) {
@@ -344,11 +347,11 @@ class AnimatedViews extends React.Component {
                                 >
                                     <PriceMarker
                                         style={{
-                      opacity: markerOpacity,
-                      transform: [
-                        { scale: markerScale },
-                      ],
-                    }}
+                                          opacity: markerOpacity,
+                                          transform: [
+                                            { scale: markerScale },
+                                          ],
+                                        }}
                                         amount={marker.amount}
                                         selected={selected}
                                     />
